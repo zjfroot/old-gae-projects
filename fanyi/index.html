@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://www.google.com/jsapi">
+        </script>
+        <script type="text/javascript">   
+        </script>
+    </head>
+    <body>
+    
+    <script type="text/javascript">
+    google.load("language", "1");
+    google.setOnLoadCallback(init);
+    
+    function submitChange() {
+        var text = document.getElementById('text').value;
+        var dest = document.getElementById('dst').value;
+        google.language.translate(text, "se", dest, translateResult);
+        return false;
+    }
+    
+    function translateResult(result) {
+      var resultBody = document.getElementById("translation_en");
+      if (result.translation) {
+        var str = result.translation.replace('>', '&gt;').replace('<', '&lt;');
+        resultBody.innerHTML = str;
+      } else {
+        resultBody.innerHTML = '<span style="color:red">Error Translating</span>';
+      }
+    }
+
+        </script>
+        <form onsubmit="return submitChange();">
+            <table>
+                <tr>
+                    <td><div id="src"><input id="text" type="text" value=""/></div></td>
+                    <td>
+                    <input class="button" type="submit" value="Translate"/>
+                    <select id="dst">
+                        <option value="en">en</option>
+                        <option value="zh-CN">zh</option>
+                    </select>
+                    </td>
+                    <td><div id="translation_en" style="border-style:dotted;
+border-color:#DEADBEAF;border-width:1px;">Result</div></td>
+                    
+                </tr>
+            </table>  
+        </form>
+        
+        
+    <p>Created by {{author}}</p>
+        
+  
+    <!--{% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.nickname }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <a href="{{ url }}">{{ url_linktext }}</a>-->
+
+  </body>
+</html>
