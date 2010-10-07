@@ -41,7 +41,7 @@
       xmlhttp=new XMLHttpRequest();
       xmlhttp.open("POST","add",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      xmlhttp.send("src="+text.value.toLowerCase()+"&translation="+str);
+      xmlhttp.send("src="+text.value.toLowerCase()+"&translation="+str.toLowerCase());
       
     }
 
@@ -58,12 +58,16 @@
                     </select>
                     </td>
                     <td><div id="translation_en" style="border-style:dotted;
-border-color:#DEADBEAF;border-width:1px;">Result</div></td>
+border-color:#ABCEDE;border-width:1px;">Result</div></td>
                     
                 </tr>
             </table>  
         </form>
-        
+    
+    
+    <br />
+    
+    
         
     <p>Created by {{author}}</p>
     <p>Version: 1.001-alpha</p>
