@@ -41,7 +41,7 @@
       xmlhttp=new XMLHttpRequest();
       xmlhttp.open("POST","add",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      xmlhttp.send("src="+text.value+"&translation="+str);
+      xmlhttp.send("src="+text.value.toLowerCase()+"&translation="+str);
       
     }
 
@@ -66,6 +66,7 @@ border-color:#DEADBEAF;border-width:1px;">Result</div></td>
         
         
     <p>Created by {{author}}</p>
+    <p>Version: 1.001-alpha</p>
         
   
     <!--{% for greeting in greetings %}
