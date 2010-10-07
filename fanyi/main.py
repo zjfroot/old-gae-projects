@@ -1,25 +1,19 @@
 #!/usr/bin/env python
 #
-# Copyright 2007 Google Inc.
+# Copyright Jifeng Zhang.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 #
 import os
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
+from google.appengine.ext import db
 
+class Word(db.Model):
+    word = db.StringProperty();
+    translation = db.StringProperty();
+    created = db.DateTimeProperty(auto_now_add=True);
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -31,10 +25,33 @@ class MainHandler(webapp.RequestHandler):
         }
         path = os.path.join(os.path.dirname(__file__),'index.html')
         self.response.out.write(template.render(path,template_values))
+        
+        
+class AddWordHandler(webapp.RequestHandler):
+    def post(self):
+        new_word = self.request.get('src')
+        words = db.GqlQuery("SELECT * FROM Word where word = :1",new_word)
+        count = 0
+        for w in words:
+            count = count + 1
+        
+        if count < 1:
+            word = Word()
+            word.word = new_word
+            word.translation = self.request.get('translation')
+            word.put()
+            
+class ListWordsHandler(webapp.RequestHandler):
+    def get(self):
+        words = db.GqlQuery("SELECT * FROM Word ORDER BY created DESC LIMIT 10")
+        for word in words:
+            self.response.out.write(word.word+'<br />');
 
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
+    application = webapp.WSGIApplication([('/', MainHandler),
+                                          ('/add', AddWordHandler),
+                                          ('/list', ListWordsHandler)],
                                          debug=True)
     util.run_wsgi_app(application)
 
