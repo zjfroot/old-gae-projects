@@ -1,5 +1,5 @@
 application: fan-yi
-version: 1
+version: 1-test
 runtime: python
 api_version: 1
 

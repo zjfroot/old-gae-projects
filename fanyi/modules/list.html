@@ -13,25 +13,41 @@
   })();
 
 </script>
-    </head>
-
 
 <style type="text/css">
     table#list td {
         border-style:dotted;
         border-color:#ABCEDE;border-width:1px;
     }
+
 </style>
+    </head>
 <body>
+
+    <script type="text/javascript">
+        function deleteWord(w){
+        
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.open("POST","delete",true);
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xmlhttp.send("word="+w.innerText);
+            w.innerHTML = '<span style="color:red">Deleted</span>';
+        }
+
+        </script>
+
 <table id="list">
     <tr>
+    <td></td>
     <td><strong>Word:</strong></td>
     <td><strong>Translation:</strong></td>
     </tr>
 
     {%for word in words%}
     <tr>
-        <td>{{word.word}}</td><td>{{word.translation}}</td>
+        <td><a href="javascript:deleteWord({{word.word}})">delete</a>
+        </td><td><div id="{{word.word}}">{{word.word}}</div></td>
+        <td>{{word.translation}}</td>
     </tr>
     {% endfor %}
 </table>

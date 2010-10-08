@@ -11,6 +11,7 @@ from google.appengine.ext.webapp import template
 sys.path.append('modules')
 from add import AddWordHandler
 from list import ListWordsHandler
+from delete import DeleteWordHandler
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -28,9 +29,11 @@ def main():
     #strange errors
     list_handler = ListWordsHandler()
     add_handler = AddWordHandler()
+    delete_handler = DeleteWordHandler()
     application = webapp.WSGIApplication([('/', MainHandler),
                                           ('/add', AddWordHandler),
-                                          ('/list', ListWordsHandler)],
+                                          ('/list', ListWordsHandler),
+                                          ('/delete', DeleteWordHandler)],
                                          debug=True)
     util.run_wsgi_app(application)
 
