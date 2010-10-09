@@ -25,13 +25,13 @@
 <body>
 
     <script type="text/javascript">
-        function deleteWord(w){
+        function deleteWord(key,word){
         
             xmlhttp=new XMLHttpRequest();
             xmlhttp.open("POST","delete",true);
             xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-            xmlhttp.send("word="+w.innerText);
-            w.innerHTML = '<span style="color:red">Deleted</span>';
+            xmlhttp.send("key="+key);
+            word.innerHTML = '<span style="color:red">Deleted</span>';
         }
 
         </script>
@@ -45,7 +45,7 @@
 
     {%for word in words%}
     <tr>
-        <td><a href="javascript:deleteWord({{word.word}})">delete</a>
+        <td><a href="javascript:deleteWord('{{word.key}}',{{word.word}})">delete</a>
         </td><td><div id="{{word.word}}">{{word.word}}</div></td>
         <td>{{word.translation}}</td>
     </tr>

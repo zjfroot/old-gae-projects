@@ -4,6 +4,7 @@
 #
 #
 import os,sys
+import logging
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
@@ -25,6 +26,7 @@ class MainHandler(webapp.RequestHandler):
         self.response.out.write(template.render(path,template_values))
 
 def main():
+    logging.getLogger().setLevel(logging.DEBUG)
     #need to study more python object knowledge. if follwing two lines are removed, we get
     #strange errors
     list_handler = ListWordsHandler()
