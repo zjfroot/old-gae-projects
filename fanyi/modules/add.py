@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright Jifeng Zhang.
+# Copyright Jifeng Zhang <zjfroot@gmail.com>.
 #
 #
 from google.appengine.ext import webapp
