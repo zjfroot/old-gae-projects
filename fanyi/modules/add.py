@@ -21,7 +21,8 @@ class AddWordHandler(webapp.RequestHandler):
         if count < 1:
             word = Word()
             word.word = new_word
-            word.translation = self.request.get('translation')
+            word.translation_en = self.request.get('translation_en')
+            word.translation_zh = self.request.get('translation_zh')
             word.put()
         
         #update the counter of how many times in total has been performed

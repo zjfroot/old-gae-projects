@@ -21,12 +21,11 @@
     
     <script type="text/javascript">
     google.load("language", "1");
-    google.setOnLoadCallback(init);
     
     function submitChange() {
         var text = document.getElementById('text').value;
-        var dest = document.getElementById('dst').value;
-        google.language.translate(text, "se", dest, translateResult);
+        //var dest = document.getElementById('dst').value;
+        google.language.translate(text, "se", "en", translateResult);
         return false;
     }
     
@@ -39,11 +38,28 @@
         resultBody.innerHTML = '<span style="color:red">Error Translating</span>';
       }
       
-      xmlhttp=new XMLHttpRequest();
-      xmlhttp.open("POST","add",true);
-      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      xmlhttp.send("src="+text.value.toLowerCase()+"&translation="+str.toLowerCase());
+      var text = document.getElementById('text').value;
+      google.language.translate(text, "se", "zh-CN", translateResultZh);
       
+    }
+    
+    function translateResultZh(result){
+        var resultBody = document.getElementById("translation_zh");
+        if(result.translation) {
+            var str = result.translation.replace('>', '&gt;').replace('<', '&lt;');
+            resultBody.innerHTML = str;
+        }else {
+            resultBody.innerHTML = '<span style="color:red">Error Translating</span>';
+        }
+        
+        var en_translate = document.getElementById("translation_en").innerHTML;
+        var zh_translate = document.getElementById("translation_zh").innerHTML;
+        var src = document.getElementById('text').value;
+        
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("POST","add",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send("src="+src.toLowerCase()+"&translation_en="+en_translate.toLowerCase()+"&translation_zh="+zh_translate);
     }
 
         </script>
@@ -60,7 +76,8 @@
                     </td>
                     <td><div id="translation_en" style="border-style:dotted;
 border-color:#ABCEDE;border-width:1px;">Result</div></td>
-                    
+                    <td><div id="translation_zh" style="border-style:dotted;
+border-color:#ABCEDE;border-width:1px;">结果</div></td>
                 </tr>
             </table>  
         </form>
@@ -70,7 +87,7 @@ border-color:#ABCEDE;border-width:1px;">Result</div></td>
     <a href="list">list words</a>
         
     <p>Created by {{author}}</p>
-    <p>Version: 1.003-alpha</p>
+    <p>Version: 1.004-alpha</p>
         
   
     <!--{% for greeting in greetings %}

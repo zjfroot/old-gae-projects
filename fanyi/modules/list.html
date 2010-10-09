@@ -42,13 +42,15 @@
     <td></td>
     <td><strong>Word:</strong></td>
     <td><strong>Translation:</strong></td>
+    <td><strong>翻译:</strong></td>
     </tr>
 
     {%for word in words%}
     <tr>
         <td><a href="javascript:deleteWord('{{word.key}}',{{word.word}})">delete</a>
         </td><td><div id="{{word.word}}">{{word.word}}</div></td>
-        <td>{{word.translation}}</td>
+        <td>{{word.translation_en}}</td>
+        <td>{{word.translation_zh}}</td>
     </tr>
     {% endfor %}
 </table>
