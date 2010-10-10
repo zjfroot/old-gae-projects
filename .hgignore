@@ -2,5 +2,6 @@
 syntax: glob
 
 *.pyc
-production_data
+production_data*
+.DS_Store
 

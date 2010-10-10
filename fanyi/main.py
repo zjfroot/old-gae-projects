@@ -11,7 +11,7 @@ from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
 sys.path.append('modules')
 from add import AddWordHandler
-from list import ListWordsHandler
+from list import *
 from delete import DeleteWordHandler
 
 class MainHandler(webapp.RequestHandler):
@@ -29,14 +29,16 @@ def main():
     logging.getLogger().setLevel(logging.DEBUG)
     #need to study more python object knowledge. if follwing two lines are removed, we get
     #strange errors
-    list_handler = ListWordsHandler()
+    list_handler = ListRecentWordsHandler()
+    review_handler = ListWordsToReviewHandler()
     add_handler = AddWordHandler()
     delete_handler = DeleteWordHandler()
     application = webapp.WSGIApplication([('/', MainHandler),
                                           ('/add', AddWordHandler),
-                                          ('/list', ListWordsHandler),
-                                          ('/delete', DeleteWordHandler)],
-                                         debug=True)
+                                          ('/list', ListRecentWordsHandler),
+                                          ('/delete', DeleteWordHandler),
+                                          ('/review', ListWordsToReviewHandler)],
+                                          debug=True)
     util.run_wsgi_app(application)
 
 
