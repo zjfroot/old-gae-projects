@@ -1,6 +1,8 @@
 <html>
     <head>
         <title>Fanyi</title>
+        <!--disable zooming for mobile phone-->
+        <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -43,6 +45,7 @@
     <td><strong>Word:</strong></td>
     <td><strong>Translation:</strong></td>
     <td><strong>翻译:</strong></td>
+    <td></td>
     </tr>
 
     {%for word in words%}
@@ -51,6 +54,7 @@
         </td><td><div id="{{word.word}}">{{word.word}}</div></td>
         <td>{{word.translation_en}}</td>
         <td>{{word.translation_zh}}</td>
+        <td><a href="http://tyda.se/search?form=1&w={{word.word}}" target="_blank">slå upp i tyda</a></td>
     </tr>
     {% endfor %}
 </table>
