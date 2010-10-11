@@ -50,11 +50,11 @@
 
     {%for word in words%}
     <tr>
-        <td><a href="javascript:deleteWord('{{word.key}}',{{word.word}})">delete</a>
+        <td><a href="javascript:deleteWord('{{word.key}}',{{word.word}})"><span style="color:red">X</span></a>
         </td><td><div id="{{word.word}}">{{word.word}}</div></td>
         <td>{{word.translation_en}}</td>
         <td>{{word.translation_zh}}</td>
-        <td><a href="http://tyda.se/search?form=1&w={{word.word}}" target="_blank">slå upp i tyda</a></td>
+        <td><a href="http://tyda.se/search?form=1&w={{word.word}}" target="_blank">tyda.se</a></td>
     </tr>
     {% endfor %}
 </table>
