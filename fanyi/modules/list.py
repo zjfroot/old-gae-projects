@@ -7,15 +7,14 @@ import os
 from datetime import datetime
 
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
 class ListRecentWordsHandler(webapp.RequestHandler):
     def get(self):
         #get word list
-        query = db.GqlQuery("SELECT * FROM Word ORDER BY created DESC LIMIT 100")
-        words = query.fetch(100)
+        query = db.GqlQuery("SELECT * FROM Word ORDER BY created DESC LIMIT 20")
+        words = query.fetch(20)
         
         #Reset counts
         #for w in words:
@@ -40,8 +39,8 @@ class ListRecentWordsHandler(webapp.RequestHandler):
         
 class ListWordsToReviewHandler(webapp.RequestHandler):
     def get(self):
-        query = db.GqlQuery("SELECT * FROM Word ORDER BY reviewed_times ASC, created DESC, last_reviewed ASC LIMIT 10")
-        words = query.fetch(10)
+        query = db.GqlQuery("SELECT * FROM Word ORDER BY reviewed_times ASC, created DESC LIMIT 5")
+        words = query.fetch(5)
         
         for w in words:
             w.reviewed_times = w.reviewed_times + 1
