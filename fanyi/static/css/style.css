@@ -1,0 +1,28 @@
+body {
+    color: #000;
+    font-size: 80%;
+    /*font-family: 'Lucida Grande','georgia',verdana, arial, sans-serif;*/
+    font-family: 'georgia',verdana, arial, sans-serif;
+}
+
+#translation_en{
+    border-style:dotted;
+    border-color:#ABCEDE;
+    border-width:1px;
+    color:#58ACFA;
+}
+#translation_zh{
+    border-style:dotted;
+    border-color:#ABCEDE;
+    border-width:1px;
+    color:#58ACFA;
+}
+
+table#list td {
+        border-style:dotted;
+        border-color:#ABCEDE;border-width:1px;
+}
+
+.small{
+    font-size: 11px;
+}
