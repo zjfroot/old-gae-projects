@@ -16,7 +16,7 @@
             xmlhttp.send("note="+note);
             
             var notes = document.getElementById("notes");
-            notes.innerHTML = note+"<br />"+notes.innerHTML;
+            notes.innerHTML = "*"+note+"<br />"+notes.innerHTML;
             document.getElementById("note").value = "";
             return false;
         }
