@@ -17,6 +17,7 @@
             
             var notes = document.getElementById("notes");
             notes.innerHTML = note+"<br />"+notes.innerHTML;
+            document.getElementById("note").value = "";
             return false;
         }
     </script>
@@ -35,7 +36,7 @@
     </form>
     <div id="notes">
         {% for note in notes%}
-            {{note.note}}<br />
+            *{{note.note}}<br />
         {% endfor %}
     </div>
     
