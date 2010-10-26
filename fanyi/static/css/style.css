@@ -1,6 +1,6 @@
 body {
     color: #000;
-    font-size: 140%;
+    font-size: 100%;
     /*font-family: 'Lucida Grande','georgia',verdana, arial, sans-serif;*/
     font-family: 'georgia',verdana, arial, sans-serif;
 }
@@ -17,10 +17,14 @@ body {
     border-width:1px;
     color:#58ACFA;
 }
+td{
+    font-size: 20px;
+}
 
 table#list td {
     border-style:dotted;
     border-color:#ABCEDE;border-width:1px;
+    font-size: 16px;
 }
 
 .small{
@@ -28,5 +32,5 @@ table#list td {
 }
 
 input {
-    font-size: 140%;
+    font-size: 100%;
 }
