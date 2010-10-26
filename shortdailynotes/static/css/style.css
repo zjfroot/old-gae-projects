@@ -1,0 +1,41 @@
+body {
+    color: #000;
+    font-size: 100%;
+    /*font-family: 'Lucida Grande','georgia',verdana, arial, sans-serif;*/
+    font-family: 'georgia',verdana, arial, sans-serif;
+}
+
+#translation_en{
+    border-style:dotted;
+    border-color:#ABCEDE;
+    border-width:1px;
+    color:#58ACFA;
+}
+#translation_zh{
+    border-style:dotted;
+    border-color:#ABCEDE;
+    border-width:1px;
+    color:#58ACFA;
+}
+td{
+    font-size: 20px;
+}
+
+table#list td {
+    border-style:dotted;
+    border-color:#ABCEDE;border-width:1px;
+    font-size: 16px;
+}
+
+.small{
+    font-size: 11px;
+}
+
+input {
+    font-size: 100%;
+}
+
+#credit{
+    font-size: 11px;
+    border-top: 1px solid #ABCABC
+}

@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Short Daily Notes</title>
+
+        <!--disable zooming for mobile phone-->
+        <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+        <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+    <script type="text/javascript">
+        function add(){
+            var note = document.getElementById("note").value;
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.open("POST","add",true);
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xmlhttp.send("note="+note);
+            
+            var notes = document.getElementById("notes");
+            notes.innerHTML = note+"<br />"+notes.innerHTML;
+            return false;
+        }
+    </script>
+    <form onsubmit="return add();">
+            <table>
+                <tr>
+                    <td><div><textarea id="note" rows="3" cols="32"></textarea></div></td>
+                    
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input class="button" type="submit" value="Add Note"/>
+                    </td>
+                </tr>
+            </table>  
+    </form>
+    <div id="notes">
+        {% for note in notes%}
+            {{note.note}}<br />
+        {% endfor %}
+    </div>
+    
+    <div id="credit"> 
+    Created by {{author}}
+    Version: 1.000-alpha
+    </div>
+    
+    
+
+    <!--{% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.nickname }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <a href="{{ url }}">{{ url_linktext }}</a>-->
+
+  </body>
+</html>
