@@ -15,8 +15,8 @@
             xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
             xmlhttp.send("note="+note);
             
-            var notes = document.getElementById("notes");
-            notes.innerHTML = "*"+note+"<br />"+notes.innerHTML;
+            var notes = document.getElementById("notes_today");
+            notes.innerHTML = "<div class='note'>*"+note+"</div>"+notes.innerHTML;
             document.getElementById("note").value = "";
             return false;
         }
@@ -34,15 +34,34 @@
                 </tr>
             </table>  
     </form>
-    <div id="notes">
-        {% for note in notes%}
-            *{{note.note}}<br />
+    <div class="header">
+        Notes from today:
+    </div>
+    
+    <div id="notes_today" class="notes">
+        {% for note in notes_today%}
+            <div class="note">*{{note.note}}</div>
+        {% endfor %}
+    </div>
+    <br />
+    <div class="header">Notes from yesterday:</div>
+    <div id="notes_yesterday" class="notes">
+        {% for note in notes_yesterday%}
+            <div class="note">*{{note.note}}</div>
+        {% endfor %}
+    </div>
+    <br />
+    <div class="header">Notes from older dates:</div>
+    <div id="notes_older" class="notes">
+        {% for note in notes_older%}
+            <div class="note">*{{note.note}}</div>
         {% endfor %}
     </div>
     
+    <br />
     <div id="credit"> 
     Created by {{author}}
-    Version: 1.001-alpha
+    Version: 1.004-alpha
     </div>
     
     
