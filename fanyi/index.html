@@ -73,9 +73,14 @@
         <form onsubmit="return submitChange();">
             <table>
                 <tr>
-                    <td><div id="src"><input id="text" type="text" value="" size="15"/></div></td>
-                    <td>
-                    <input class="button" type="submit" value="Translate"/>
+                    <td><div id="src">
+                    <textarea id="text" rows="2" cols="25"></textarea>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td  align="center">
+                    <input id="translateButton" class="button" type="submit" value="Translate"/>
                     <!--<select id="dst">
                         <option value="en">en</option>
                         <option value="zh-CN">zh</option>
@@ -84,23 +89,18 @@
                 </tr>
             </table>  
         </form>
-        <hr />
-        <table>
-            <tr>
-                <td><i>English translation:</i></td>
-                <td><i>翻译：</i></td>
-            <tr>
-            <tr>
-                <td><div id="translation_en">Result</div></td>
-                <td><div id="translation_zh">结果</div></td>
-                <td><div id="tyda"></div></td>
-            <tr>
-        </table>
-    
+        <div id="result">
+        <div class="header">
+            Translation:
+        </div>
+        <div id="translation_en" class="translation">Result</div>
+        <div id="translation_zh" class="translation">结果</div>
+        <div id="tyda"></div>
+        </div>
     
     <br />
     
-    <a href="review">review words</a>
+    <a href="review">review</a>
     <br /><br />
     <div class="small"> 
     Created by {{author}}
