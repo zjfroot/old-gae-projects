@@ -1,0 +1,7 @@
+# use glob syntax.
+syntax: glob
+
+*.pyc
+production_data*
+.DS_Store
+

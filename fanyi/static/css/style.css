@@ -1,0 +1,63 @@
+body {
+    color: #000;
+    font-size: 100%;
+    /*font-family: 'Lucida Grande','georgia',verdana, arial, sans-serif;*/
+    font-family: 'georgia',verdana, arial, sans-serif;
+}
+
+/*
+#translation_en{
+    border-style:dotted;
+    border-color:#ABCEDE;
+    border-width:1px;
+    color:#58ACFA;
+}
+#translation_zh{
+    border-style:dotted;
+    border-color:#ABCEDE;
+    border-width:1px;
+    color:#58ACFA;
+}*/
+td{
+    font-size: 20px;
+}
+
+table#list td {
+    border-style:dotted;
+    border-color:#ABCEDE;border-width:1px;
+    font-size: 16px;
+}
+
+.small{
+    font-size: 11px;
+}
+
+#translateButton{
+   font-family: 'georgia';
+   font-size: 120%;
+   height: 40px; 
+   width: 150px; 
+}
+
+#text {
+    font-size: 100%;
+    border: 2px dashed #ABCABC
+}
+
+#result{
+    border-top: 1px dashed #CFD2E8;
+    
+}
+
+.header{
+    font-size:100%;
+    font-weight:bold;
+    background-color: #CFD2E8;
+}
+
+.translation{
+    border-left: 1px dashed #CFD2E8;
+    border-right: 1px dashed #CFD2E8;
+    border-bottom: 1px dashed #CFD2E8;
+    background-color: #E9EAF5;
+}

@@ -1,0 +1,20 @@
+application: fan-yi
+version: 1-test-1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /css
+  static_dir: static/css
+
+- url: /favicon.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+  
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: .*
+  script: main.py
+

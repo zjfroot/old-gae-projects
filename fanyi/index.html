@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>Fanyi</title>
+        <script type="text/javascript" src="http://www.google.com/jsapi">
+        </script>
+        <!--disable zooming for mobile phone-->
+        <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+        <link type="text/css" rel="stylesheet" href="/css/style.css" />
+        
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7675942-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    </head>
+    <body>
+    <script type="text/javascript">
+    google.load("language", "1");
+    
+    function submitChange() {
+        var text = document.getElementById('text').value;
+        //var dest = document.getElementById('dst').value;
+        google.language.translate(text, "se", "en", translateResult);
+        return false;
+    }
+    
+    function translateResult(result) {
+      var resultBody = document.getElementById("translation_en");
+      if (result.translation) {
+        var str = result.translation.replace('>', '&gt;').replace('<', '&lt;');
+        resultBody.innerHTML = str;
+      } else {
+        resultBody.innerHTML = '<span style="color:red">Error Translating</span>';
+      }
+      
+      var text = document.getElementById('text').value;
+      google.language.translate(text, "se", "zh-CN", translateResultZh);
+      
+    }
+    
+    function translateResultZh(result){
+        var resultBody = document.getElementById("translation_zh");
+        if(result.translation) {
+            var str = result.translation.replace('>', '&gt;').replace('<', '&lt;');
+            resultBody.innerHTML = str;
+        }else {
+            resultBody.innerHTML = '<span style="color:red">Error Translating</span>';
+        }
+        
+        var en_translate = document.getElementById("translation_en").innerHTML;
+        var zh_translate = document.getElementById("translation_zh").innerHTML;
+        var src = document.getElementById('text').value;
+        
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("POST","add",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send("src="+src.toLowerCase()+"&translation_en="+en_translate.toLowerCase()+"&translation_zh="+zh_translate);
+        
+        http://tyda.se/search?form=1&w=omfattning
+        var tydaDiv = document.getElementById("tyda");
+        tydaDiv.innerHTML = '<a href="http://tyda.se/search?form=1&w='+src+'" target="_blank">tyda.se</a>'
+    }
+
+        </script>
+        <form onsubmit="return submitChange();">
+            <table>
+                <tr>
+                    <td><div id="src">
+                    <textarea id="text" rows="2" cols="25"></textarea>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td  align="center">
+                    <input id="translateButton" class="button" type="submit" value="Translate"/>
+                    <!--<select id="dst">
+                        <option value="en">en</option>
+                        <option value="zh-CN">zh</option>
+                    </select>-->
+                    </td>
+                </tr>
+            </table>  
+        </form>
+        <div id="result">
+        <div class="header">
+            Translation:
+        </div>
+        <div id="translation_en" class="translation">Result</div>
+        <div id="translation_zh" class="translation">结果</div>
+        <div id="tyda"></div>
+        </div>
+    
+    <br />
+    
+    <a href="review">review</a>
+    <br /><br />
+    <div class="small"> 
+    Created by {{author}}
+    Version: 1.008-alpha
+    </div>
+        
+
+    <!--{% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.nickname }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <a href="{{ url }}">{{ url_linktext }}</a>-->
+
+  </body>
+</html>
