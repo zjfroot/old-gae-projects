@@ -68,6 +68,10 @@
         var tydaDiv = document.getElementById("tyda");
         tydaDiv.innerHTML = '<a href="http://tyda.se/search?form=1&w='+src+'" target="_blank">tyda.se</a>'
     }
+    
+    function clearInput(){
+        document.getElementById('text').value = "";
+    }
 
         </script>
         <form onsubmit="return submitChange();">
@@ -81,6 +85,7 @@
                 <tr>
                     <td  align="center">
                     <input id="translateButton" class="button" type="submit" value="Translate"/>
+                    <input id="clearButton" class="button" type="button" onClick="javascript:clearInput();" value="Clear"/>
                     <!--<select id="dst">
                         <option value="en">en</option>
                         <option value="zh-CN">zh</option>
