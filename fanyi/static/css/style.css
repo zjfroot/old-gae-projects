@@ -32,11 +32,17 @@ table#list td {
     font-size: 11px;
 }
 
-#translateButton, #clearButton{
+#translateButton{
    font-family: 'georgia';
    font-size: 120%;
    height: 40px; 
    width: 150px; 
+}
+#clearButton{
+   font-family: 'georgia';
+   font-size: 120%;
+   height: 40px; 
+   width: 70px; 
 }
 
 #text {
