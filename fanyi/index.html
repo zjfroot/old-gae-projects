@@ -42,21 +42,41 @@
       }
       
       var text = document.getElementById('text').value;
-      google.language.translate(text, "se", "zh-CN", translateFromTyda);
+      google.language.translate(text, "se", "zh-CN", translateResultZh);
       
     }
     
     function translateFromTyda(result){
-        /*
+        
         var src = document.getElementById('text').value;
         
         xmlhttp=new XMLHttpRequest();
-        xmlhttp.open("GET","tyda",true);
+        xmlhttp.open("GET","tyda?src="+src.toLowerCase(),true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp.send("src="+src.toLowerCase());
-        */
         
-        translateResultZh(result);
+        xmlhttp.onreadystatechange=function() {
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var tyda_word_list = xmlhttp.responseText;
+                var tyda_en_words_div = document.getElementById("tyda_en_words");
+                //remove the "'" and "[" and "]"
+                var en_words_list = tyda_word_list.replace(/'/g,'').replace("[",'').replace("]",'');
+                tyda_en_words_div.innerHTML = en_words_list;
+                
+                google.language.translate(en_words_list, "se", "zh-CN", translateResultZh2);
+            }
+        }
+        xmlhttp.send(null);
+        
+    }
+    
+    function translateResultZh2(result){
+        var zh_words_div = document.getElementById("zh_words");
+        if(result.translation) {
+            var str = result.translation.replace('>', '&gt;').replace('<', '&lt;');
+            zh_words_div.innerHTML = str;
+        }else {
+            zh_words_div.innerHTML = '<span style="color:red">Error Translating</span>';
+        }
     }
     
     function translateResultZh(result){
@@ -79,7 +99,8 @@
         
         http://tyda.se/search?form=1&w=omfattning
         var tydaDiv = document.getElementById("tyda");
-        tydaDiv.innerHTML = '<a href="http://tyda.se/search?form=1&w='+src+'" target="_blank">tyda.se</a>'
+        //tydaDiv.innerHTML = '<a href="http://tyda.se/search?form=1&w='+src+'" target="_blank">tyda.se</a>';
+        tydaDiv.innerHTML = '<input id="clearButton" class="button" type="button" onClick="javascript:translateFromTyda();" value="Tyda"/>';
     }
     
     function clearInput(){
@@ -113,9 +134,14 @@
         </div>
         <div id="translation_en" class="translation">Result</div>
         <div id="translation_zh" class="translation">结果</div>
+        <br />
         <div id="tyda"></div>
+        <br />
+        <div class="header">Tyda translation:</div>
+        <div id="tyda_en_words" class="translation"></div>
+        <div id="zh_words" class="translation"></div>
+        
         </div>
-    
     <br />
     
     <a href="review">review</a>
