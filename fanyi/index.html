@@ -56,10 +56,9 @@
         
         xmlhttp.onreadystatechange=function() {
             if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var tyda_word_list = xmlhttp.responseText;
+                var en_words_list = xmlhttp.responseText;
                 var tyda_en_words_div = document.getElementById("tyda_en_words");
-                //remove the "'" and "[" and "]"
-                var en_words_list = tyda_word_list.replace(/'/g,'').replace("[",'').replace("]",'');
+
                 tyda_en_words_div.innerHTML = en_words_list;
                 
                 google.language.translate(en_words_list, "se", "zh-CN", translateResultZh2);
@@ -77,6 +76,15 @@
         }else {
             zh_words_div.innerHTML = '<span style="color:red">Error Translating</span>';
         }
+        
+        var en_translate = document.getElementById("tyda_en_words").innerHTML;
+        var zh_translate = document.getElementById("zh_words").innerHTML;
+        var src = document.getElementById('text').value;
+        
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("POST","addTyda",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send("src="+src.toLowerCase()+"&translation_en="+en_translate.toLowerCase()+"&translation_zh="+zh_translate);
     }
     
     function translateResultZh(result){

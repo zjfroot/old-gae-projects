@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-#
+# -*- coding: utf-8 -*-
 # Copyright Jifeng Zhang <zjfroot@gmail.com>.
 #
 #
 import urllib2
 import re
 
-url = "http://tyda.se/search/utvalda"
+url = "http://tyda.se/search/stämning"
 
 response = urllib2.urlopen(url)
 result = response.read()
