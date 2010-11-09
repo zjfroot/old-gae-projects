@@ -13,6 +13,7 @@ sys.path.append('modules')
 from add import AddWordHandler
 from list import *
 from delete import DeleteWordHandler
+from tyda import TydaHandler
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -33,8 +34,10 @@ def main():
     review_handler = ListWordsToReviewHandler()
     add_handler = AddWordHandler()
     delete_handler = DeleteWordHandler()
+    tyda_hander = TydaHandler()
     application = webapp.WSGIApplication([('/', MainHandler),
                                           ('/add', AddWordHandler),
+                                          ('/tyda', TydaHandler),
                                           ('/list', ListRecentWordsHandler),
                                           ('/delete', DeleteWordHandler),
                                           ('/review', ListWordsToReviewHandler)],
