@@ -58,10 +58,14 @@
             if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var en_words_list = xmlhttp.responseText;
                 var tyda_en_words_div = document.getElementById("tyda_en_words");
-
-                tyda_en_words_div.innerHTML = en_words_list;
+                if(en_words_list != ""){
+                    tyda_en_words_div.innerHTML = en_words_list;
                 
-                google.language.translate(en_words_list, "se", "zh-CN", translateResultZh2);
+                    google.language.translate(en_words_list, "se", "zh-CN", translateResultZh2);
+                }else{
+                    tyda_en_words_div.innerHTML = '<span style="color:red">Error Translating From tyda</span>';
+                }
+                
             }
         }
         xmlhttp.send(null);
@@ -73,18 +77,21 @@
         if(result.translation) {
             var str = result.translation.replace('>', '&gt;').replace('<', '&lt;');
             zh_words_div.innerHTML = str;
+            
+            //save the tyda translation result
+            var en_translate = document.getElementById("tyda_en_words").innerHTML;
+            var zh_translate = document.getElementById("zh_words").innerHTML;
+            var src = document.getElementById('text').value;
+        
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.open("POST","addTyda",true);
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xmlhttp.send("src="+src.toLowerCase()+"&translation_en="+en_translate.toLowerCase()+"&translation_zh="+zh_translate);
         }else {
             zh_words_div.innerHTML = '<span style="color:red">Error Translating</span>';
         }
         
-        var en_translate = document.getElementById("tyda_en_words").innerHTML;
-        var zh_translate = document.getElementById("zh_words").innerHTML;
-        var src = document.getElementById('text').value;
         
-        xmlhttp=new XMLHttpRequest();
-        xmlhttp.open("POST","addTyda",true);
-        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp.send("src="+src.toLowerCase()+"&translation_en="+en_translate.toLowerCase()+"&translation_zh="+zh_translate);
     }
     
     function translateResultZh(result){
@@ -109,6 +116,10 @@
         var tydaDiv = document.getElementById("tyda");
         //tydaDiv.innerHTML = '<a href="http://tyda.se/search?form=1&w='+src+'" target="_blank">tyda.se</a>';
         tydaDiv.innerHTML = '<input id="clearButton" class="button" type="button" onClick="javascript:translateFromTyda();" value="Tyda"/>';
+        
+        //clear the tyda translation result
+        document.getElementById("tyda_en_words").innerHTML="";
+        document.getElementById("zh_words").innerHTML="";
     }
     
     function clearInput(){
@@ -156,9 +167,9 @@
     <br /><br />
     <div class="small"> 
     Created by {{author}}
-    Version: Dev - 1.2.2
+    Version: Dev - 1.2.3
     <br />
-    App was built on: Tue Nov  9 17:28:02 WEST 2010
+    App was built on: Tue Nov  9 17:49:52 WEST 2010
     </div>
         
 
