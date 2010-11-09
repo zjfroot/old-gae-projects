@@ -10,7 +10,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
 sys.path.append('modules')
-from add import AddWordHandler
+from add import AddWordHandler, AddTydaTranslationHandler
 from list import *
 from delete import DeleteWordHandler
 from tyda import TydaHandler
@@ -35,8 +35,10 @@ def main():
     add_handler = AddWordHandler()
     delete_handler = DeleteWordHandler()
     tyda_hander = TydaHandler()
+    add_tyda_handler = AddTydaTranslationHandler()
     application = webapp.WSGIApplication([('/', MainHandler),
                                           ('/add', AddWordHandler),
+                                          ('/addTyda', AddTydaTranslationHandler),
                                           ('/tyda', TydaHandler),
                                           ('/list', ListRecentWordsHandler),
                                           ('/delete', DeleteWordHandler),

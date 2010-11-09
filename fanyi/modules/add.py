@@ -3,6 +3,8 @@
 # Copyright Jifeng Zhang <zjfroot@gmail.com>.
 #
 #
+from types import *
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
@@ -35,3 +37,16 @@ class AddWordHandler(webapp.RequestHandler):
             counter.name = 'translate_counter'
             counter.count = 1
         counter.put()
+        
+class AddTydaTranslationHandler(webapp.RequestHandler):
+    def post(self):
+        original_word = self.request.get('src')
+        
+        query = db.GqlQuery("SELECT * FROM Word where word = :1",original_word)
+        
+        word = query.get()
+        
+        if isinstance(word.translation_tyda_en, NoneType):
+            word.translation_tyda_en = self.request.get('translation_en');
+            word.translation_tyda_zh = self.request.get('translation_zh');
+            word.put()
