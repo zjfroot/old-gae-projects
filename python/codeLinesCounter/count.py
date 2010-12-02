@@ -4,10 +4,13 @@
 import os
 from os.path import join, getsize
 #path = 'P:/trunk/pan'
-path = 'P:/branches/selenium-grid-1.1'
-fileSubfix = '.java'
 #path = 'I:/oneview/dev/java/src'
 #path = 'H:/'
+#path = 'C:/jifeng/pj/fanyi'
+path = 'C:/jifeng/pj/coolnote'
+#fileSubfix = '.py'
+fileSubfix = '.java'
+
 totalLinesNr = 0
 totalFileNr = 0
 for root, dirs, files in os.walk(path):
