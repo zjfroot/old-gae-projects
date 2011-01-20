@@ -1,0 +1,76 @@
+﻿<html>
+    <head>
+        <title>Fanyi</title>
+        <!--disable zooming for mobile phone-->
+        <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+        <link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7675942-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Cherry+Cream+Soda' rel='stylesheet' type='text/css'>
+    </head>
+<body>
+
+<div id="container">
+    <div class="titleDiv">
+        Dags att lära sig ett nytt ord:
+    </div>
+    <br />
+    <div class="largeFontDiv">
+        {{word.word}}
+    </div>
+    <br />
+    
+    <div class="header">
+        Översättning (en):
+    </div>
+    <div class="content">
+        {{word.translation_en}}
+        
+        {% if word.translation_tyda_en %}
+            ,{{word.translation_tyda_en}}
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="header">
+        Översättning (zh)
+    </div>
+    <div class="content">
+        {{word.translation_zh}}
+        
+        {% if word.translation_tyda_zh %}
+            ,{{word.translation_tyda_zh}}
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="header">
+        Tyda länk:
+    </div>
+    <div class="content">
+        <a href="http://tyda.se/search?form=1&w={{word.word}}" target="_blank">länk</a>
+    </div>
+    
+    <br />
+    <div class="footer">
+        <input class="bigButton" type="button" onClick="window.location.reload()" value="Hämta ett nytt ord"/>
+    </div>
+</div>
+
+
+<br />
+{% include "footer.inc" %}
+
+</body>
+</html>
