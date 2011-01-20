@@ -2,7 +2,7 @@ body {
     color: #000;
     font-size: 100%;
     /*font-family: 'Lucida Grande','georgia',verdana, arial, sans-serif;*/
-    font-family: 'georgia',verdana, arial, sans-serif;
+    font-family: 'Cherry Cream Soda',verdana, arial, sans-serif;
 }
 
 /*
@@ -29,7 +29,7 @@ table#list td {
 }
 
 .small{
-    font-size: 11px;
+    font-size: 60%;
 }
 
 #translateButton{
@@ -59,11 +59,48 @@ table#list td {
     font-size:100%;
     font-weight:bold;
     background-color: #CFD2E8;
+    text-align: center;
 }
+
+.footer{
+    font-size:100%;
+    font-weight:bold;
+    text-align: center;
+}
+
+.titleDiv{
+    font-size:120%;
+    font-weight:bold;
+    text-align: center;
+}
+
+.largeFontDiv{
+    font-size:150%;
+    font-weight:bold;
+    color: blue;
+    text-align: center;
+}
+
 
 .translation{
     border-left: 1px dashed #CFD2E8;
     border-right: 1px dashed #CFD2E8;
     border-bottom: 1px dashed #CFD2E8;
     background-color: #E9EAF5;
+}
+
+.content{
+    border-left: 1px dashed #CFD2E8;
+    border-right: 1px dashed #CFD2E8;
+    border-bottom: 1px dashed #CFD2E8;
+    background-color: #E9EAF5;
+    font-size:130%;
+    text-align: center;
+    color: blue;
+}
+
+.bigButton{
+   font-family: 'Cherry Cream Soda','georgia',verdana, arial, sans-serif;
+   font-size: 120%;
+   height: 40px; 
 }

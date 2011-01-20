@@ -14,6 +14,7 @@ from add import AddWordHandler, AddTydaTranslationHandler
 from list import *
 from delete import DeleteWordHandler
 from tyda import TydaHandler
+from randomwords import RandomWordsHandler
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -36,13 +37,16 @@ def main():
     delete_handler = DeleteWordHandler()
     tyda_hander = TydaHandler()
     add_tyda_handler = AddTydaTranslationHandler()
+    random_words_handler = RandomWordsHandler()
     application = webapp.WSGIApplication([('/', MainHandler),
                                           ('/add', AddWordHandler),
                                           ('/addTyda', AddTydaTranslationHandler),
                                           ('/tyda', TydaHandler),
                                           ('/list', ListRecentWordsHandler),
                                           ('/delete', DeleteWordHandler),
-                                          ('/review', ListWordsToReviewHandler)],
+                                          ('/review', ListWordsToReviewHandler),
+                                          ('/random', RandomWordsHandler),
+                                          ],
                                           debug=True)
     util.run_wsgi_app(application)
 
