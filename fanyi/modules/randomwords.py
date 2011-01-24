@@ -21,10 +21,15 @@ class RandomWordsHandler(webapp.RequestHandler):
             query = db.GqlQuery("SELECT * FROM Word ORDER BY created DESC LIMIT 1500")
             wordList = query.fetch(1500)
             memcache.add(key,wordList,360000)
+            
+        count = len(wordList)
         
-        #get a random word from the word list
-        index = random.randrange(0,len(wordList),1)
-        word = wordList[index]
+        if count > 0:
+            #get a random word from the word list
+            index = random.randrange(0,count,1)
+            word = wordList[index]
+        else:
+            word = 'Word not found'
         
         template_values = {
             'word':word,
