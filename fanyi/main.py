@@ -44,7 +44,7 @@ def main():
                                           ('/tyda', TydaHandler),
                                           ('/list', ListRecentWordsHandler),
                                           ('/delete', DeleteWordHandler),
-                                          ('/review', ListWordsToReviewHandler),
+                                          #('/review', ListWordsToReviewHandler),
                                           ('/random', RandomWordsHandler),
                                           ],
                                           debug=True)
