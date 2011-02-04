@@ -16,7 +16,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 <div class="small"> 
     Created by {{author}}
-    Version: Dev - 1.2.6
+    Version: Dev - 1.2.7
     <br />
-    App was built on: Wed Feb  2 13:41:16 CET 2011
+    App was built on: Fri Feb  4 15:14:25 CET 2011
 </div>
