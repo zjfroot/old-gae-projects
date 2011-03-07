@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>瑞英瑞汉字典</title>
+        <script type="text/javascript" src="http://www.google.com/jsapi">
+        </script>
+        <link type="text/css" rel="stylesheet" href="/css/style_s.css" />
+    {% include "googleanalytics.inc" %}
+    </head>
+    <body>
+    <script type="text/javascript" src="/js/g_translate_api.js">
+    </script>
+        <div>
+        <form onsubmit="return submitChange();">
+            <table>
+                <tr>
+                    <td><div id="src">
+                    <textarea id="text" rows="1" cols="15"></textarea>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td  align="center">
+                    <input id="translateButton" class="button" type="submit" value="Translate"/>
+                    <input id="clearButton" class="button" type="button" onClick="javascript:clearInput();" value="Clear"/>
+                    <!--<select id="dst">
+                        <option value="en">en</option>
+                        <option value="zh-CN">zh</option>
+                    </select>-->
+                    </td>
+                </tr>
+            </table>  
+        </form>
+        </div>
+        <div id="result">
+        <div class="header">
+            Translation:
+        </div>
+        <div id="translation_en" class="translation">Result</div>
+        <div id="translation_zh" class="translation">结果</div>
+        <br />
+        <div id="tyda"></div>
+        <br />
+        <div class="header">Tyda translation:</div>
+        <div id="tyda_en_words" class="translation"></div>
+        <div id="zh_words" class="translation"></div>
+        
+        </div>
+    <br />
+    
+    
+    <br /><br />
+
+  </body>
+</html>
