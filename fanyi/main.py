@@ -16,15 +16,20 @@ from delete import DeleteWordHandler
 from tyda import TydaHandler
 from randomwords import RandomWordsHandler
 
+author = 'Jifeng Zhang'
+action = 'programming'
+template_values = {
+    'author':author,
+    'action':action,
+}
 class MainHandler(webapp.RequestHandler):
     def get(self):
-        author = 'Jifeng Zhang'
-        action = 'programming'
-        template_values = {
-            'author':author,
-            'action':action,
-        }
         path = os.path.join(os.path.dirname(__file__),'index.html')
+        self.response.out.write(template.render(path,template_values))
+        
+class SmallScreenDeviceMainPageHandler(webapp.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__),'index_s.html')
         self.response.out.write(template.render(path,template_values))
 
 def main():
@@ -46,6 +51,7 @@ def main():
                                           ('/delete', DeleteWordHandler),
                                           #('/review', ListWordsToReviewHandler),
                                           ('/random', RandomWordsHandler),
+                                          ('/m', SmallScreenDeviceMainPageHandler),
                                           ],
                                           debug=True)
     util.run_wsgi_app(application)
