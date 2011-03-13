@@ -99,4 +99,6 @@ google.load("language", "1");
     
     function clearInput(){
         document.getElementById('text').value = "";
+	document.getElementById('text').focus();
+
     }
